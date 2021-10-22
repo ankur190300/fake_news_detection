@@ -1,25 +1,40 @@
-<mat-toolbar color = "primary">
-  <span><a routerLink = "/">Fake News Detector</a></span><span></span>
-   <span class = "spacer "></span> <!--to seperate all the header elements to left or right -->
-  <ul>
-    <li *ngIf = "userIsAuthenticated">
-      <a mat-button routerLink = "/picupload" routerLinkActive= "mat-accent" >Picture Upload</a>
-    </li>
-    <li *ngIf = "userIsAuthenticated">
-      <a mat-button routerLink = "/vidupload" routerLinkActive= "mat-accent" >Video Upload</a>
-    </li>
-    <li *ngIf = "!userIsAuthenticated">
-      <a mat-button routerLink ="/" routerLinkActive = "mat-accent">Login </a>
-    </li>
-    <li *ngIf = "!userIsAuthenticated">
-      <a mat-button routerLink ="/" routerLinkActive = "mat-accent">Sign Up </a>
-    </li>
-    <li  *ngIf = "userIsAuthenticated">
-      <button mat-button (click)= "onLogout()">Logout </button>
-    </li>
+<div class="header">
+  <div>
+    <a routerLink="/" class="header__brand">Fake News Detector</a>
+  </div>
 
-  </ul>
-
-</mat-toolbar>
-
-
+  <div class="header__group">
+    <div *ngIf="user" class="header__button">
+      <a routerLink="/picupload">Picture Upload</a>
+    </div>
+    <div *ngIf="user" class="header__button">
+      <a routerLink="/vidupload">Video Upload</a>
+    </div>
+    <div *ngIf="!user" class="header__button">
+      <a button class="btn btn-social btn-google" (click)="signInWithGoogle()"
+        >Login with Google
+      </a>
+    </div>
+    <div *ngIf="!user" class="header__button">
+      <a button class="btn btn-social btn-google" (click)="signInWithFB()"
+        >Login with Facebook
+      </a>
+    </div>
+    <div *ngIf="user" class="header__button" style="padding: 0.6rem 0.8rem">
+      <div class="user__group">
+        <div class="user__photo">
+          <img [src]="user.photoUrl" alt="userName" />
+        </div>
+        <div class="user__name">
+          {{ userName }}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="user" class="header__button">
+      <a (click)="signOut()"
+        >Logout
+        <fa-icon [icon]="signOutIcon"></fa-icon>
+      </a>
+    </div>
+  </div>
+</div>
