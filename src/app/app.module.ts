@@ -12,6 +12,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { HttpClientModule } from '@angular/common/http';
+import { NewsFeedComponent } from './news-feed/news-feed.component';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -25,7 +28,8 @@ import {MatIconModule} from '@angular/material/icon';
     VidUploadComponent,
     LandingPageComponent,
     PicUploadComponent,
-    HeaderComponent
+    HeaderComponent,
+    NewsFeedComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     SocialLoginModule,
     FontAwesomeModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     {
